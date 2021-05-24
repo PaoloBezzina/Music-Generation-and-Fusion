@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Ai Music</title>
+
+    <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+    <!-- Importing Fonts -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <!-- https://getbootstrap.com/ -->
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="static\styles\bootstrap.min.css">
+
+    <!-- Templatemo style -->
+    <!-- <link rel="stylesheet" href="css/templatemo-style.css"> -->
+    <link rel="stylesheet" href="static\styles\templatemo-style.css">
+
+    <!-- Importing Favicon -->
+    <!-- <link rel="shortcut icon" href="assets/favicon.ico"> -->
+    <link rel="shortcut icon" href="static\images\favicon.ico">
+
+    <!-- Importing file selection style sheet -->
+    <!-- <link rel="stylesheet" href="css/file.css"> -->
+    <link rel="stylesheet" href="static\styles\file.css">
+
+    <!-- Importing Midi Player -->
+    <script
+        src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.21.0/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.1.0"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-12">
+                <header class="text-center tm-site-header">
+                    <div class="tm-site-logo"></div>
+                    <h1 class="pl-4 tm-site-title">Ai Music - GAPT</h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tm-video-container">
+                    <img class="tm-welcome-video" src="static\images\website-gif.gif" alt="Ai In Music Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container tm-container-2">
+
+        <hr>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="tm-welcome-text">Generate a Fusion between two different songs</h2>
+            </div>
+        </div>
+        <!-- Explenation ta xhinu jigri -->
+        <div class="row tm-section-par">
+            <div class="col-lg-12 col-md-12 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <h3 class="mt-2 mb-3 tm-text-gray">Overview</h3>
+                <p>Input two midi files, press process and then press the 'Generate' button to create an interpolation
+                    between the two inputted files.
+                    It is important to note that the midi files must be single instrument and longer than 30 seconds.
+                    This fusion is done by using a Variational AutoEncoder (VAE)</p>
+            </div>
+        </div>
+
+        <!-- Displaying sample for pre-fused midi files -->
+        <div class="tm-section-mb tm-section-mt">
+            <h3 class="mt-2 mb-3 tm-text-gray">Classical Dataset</h3>
+            <div class="col-lg-12 col-md-12 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <h3 class="mt-2 mb-3 tm-text-gray">Samples</h3>
+            </div>
+            <div class="row tm-section-mb">
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Fur Elise - Beethoven</h3>
+                    <div>
+                        <midi-player
+                            src="static\samples\beethoven x debussy\Beethoven, Ludwig van, Für Elise, WoO 59, noAU3qDS1dA.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Clair De Lune - Debussy</h3>
+                    <div>
+                        <midi-player
+                            src="static\samples\beethoven x debussy\Debussy, Claude, Clair de lune, CvFH_6DNRCY.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Sonata in G Major - Haydn</h3>
+                    <div>
+                        <midi-player
+                            src="static\samples\beethoven x haydn\Haydn, Joseph, Keyboard Sonata in G major, Hob.XVI_40, gFDNh1-7YUw.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4 align-self-center">
+                    <h3 class="tm-site-heading">Ronda Alla Turca - Mozart</h3>
+                    <div>
+                        <midi-player src="static\samples\mozart x haydn\Rondo_Alla_Turca.mid" sound-font></midi-player>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Displaying pre-fused midi files -->
+        <div class="tm-section-mb tm-section-mt">
+            <div class="col-lg-12 col-md-12 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <h3 class="mt-2 mb-3 tm-text-gray">Outputs</h3>
+            </div>
+            <div class="row tm-section-mb">
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Fur Elise x Clair De Lune</h3>
+                    <div>
+                        <midi-player src="static\samples\beethoven x debussy\Fur-Elise_X_Clair-de-lune.mid" sound-font>
+                        </midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Fur Elise x Sonata in G Major</h3>
+                    <div>
+                        <midi-player src="static\samples\beethoven x haydn\Fur-Elise_X_Haydn-Sonata-G-Maj.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Sonata in G Major x Clair De Lune</h3>
+                    <div>
+                        <midi-player src="static\samples\debussy x haydn\Clair-de-lune_X_Haydn-Sonata-G-maj.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4 align-self-lg-center">
+                    <h3 class="tm-site-heading">Ronda Alla Turca x Sonata in G Major</h3>
+                    <div>
+                        <midi-player src="static\samples\mozart x haydn\Haydn-Sonda-G-maj_X_Rondo_Alla_Turca.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Displaying sample for pre-fused midi files -->
+        <div class="tm-section-mb tm-section-mt">
+            <hr>
+            <h3 class="mt-2 mb-3 tm-text-gray">Video Game Dataset</h3>
+            <div class="col-lg-12 col-md-12 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <h3 class="mt-2 mb-3 tm-text-gray">Samples</h3>
+            </div>
+            <div class="row tm-section-mb">
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Super Mario</h3>
+                    <div>
+                        <midi-player
+                            src="static\samples\super mario brothers x final fantasy\SMB1OW.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Final Fantasy</h3>
+                    <div>
+                        <midi-player
+                            src="static\samples\super mario brothers x final fantasy\FinalFantasy0.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Castlevania</h3>
+                    <div>
+                        <midi-player
+                            src="static\samples\super mario brothers x castlevania\CastlevaniaLevel1AS.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4 align-self-center">
+                    <h3 class="tm-site-heading">Legend of Zelda</h3>
+                    <div>
+                        <midi-player src="static\samples\super mario brothers  x legend of zelda\Zelda.mid" sound-font></midi-player>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Displaying pre-fused midi files -->
+        <div class="tm-section-mb tm-section-mt">
+            <div class="col-lg-12 col-md-12 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <h3 class="mt-2 mb-3 tm-text-gray">Fusions</h3>
+            </div>
+            <div class="row tm-section-mb">
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Final Fantasy x Legend of Zelda</h3>
+                    <div>
+                        <midi-player src="static\samples\final fantasy x legend of zelda\LegendOfZelda0XFinalFantasy6.mid" sound-font>
+                        </midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Legend of Zelda x Super Mario</h3>
+                    <div>
+                        <midi-player src="static\samples\super mario brothers  x legend of zelda\LOZ3xMario6.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Super Mario x Castlevania</h3>
+                    <div>
+                        <midi-player src="static\samples\super mario brothers x castlevania\CastleVaniaXSuperMariotempoghli.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4 align-self-lg-center">
+                    <h3 class="tm-site-heading">Super Mario x Final Fantasy</h3>
+                    <div>
+                        <midi-player src="static\samples\super mario brothers x final fantasy\FinalFantasy0xSuperMario7.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <hr>
+        <!-- File Selection and preview section -->
+        <div class="row tm-section-mb">
+            <div class="col-lg-12">
+                <!-- File Drag and preview area -->
+                <div class="file-1">
+                    <h3 class="tm-site-heading">Midi Sample 1</h3>
+                    <div class="drag-area">
+                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                        <header>Drag & Drop to Upload Midi File</header>
+                        <span>OR</span>
+                        <button>Browse File</button>
+                        <input type="file" hidden>
+                    </div>
+                </div>
+            </div>
+            <!-- <script src="js/file.js"></script> -->
+            <script src="static\javascript\file.js"></script>
+
+            <!-- Process Midi File -->
+            <div class="col-lg-12 col-md-12 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <form action="/process-file/" method="POST" class='file'></form>
+                <p id="proc-msg" style="display:none;">Processing Done!</p>
+            </div>
+        </div>
+
+
+        <!-- File Selection and preview section -->
+        <div class="row tm-section-mb">
+            <div class="col-lg-12">
+                <!-- File Drag and preview area -->
+                <div class="file-2">
+                    <h3 class="tm-site-heading">Midi Sample 2</h3>
+                    <div class="drag-area2">
+                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                        <header>Drag & Drop to Upload Midi File</header>
+                        <span>OR</span>
+                        <button>Browse File</button>
+                        <input type="file" hidden>
+                    </div>
+                </div>
+            </div>
+            <!-- <script src="js/file2.js"></script> -->
+            <script src="static\javascript\file2.js"></script>
+
+            <!-- Process Midi File -->
+            <div class="col-lg-12 col-md-12 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <form action="/process-file-2/" method="POST" class='file2'></form>
+                <p id="proc-msg-2" style="display:none;">Processing Done!</p>
+            </div>
+        </div>
+
+
+        <!-- Fusion Python script run -->
+        <hr>
+        <div class="tm-section-par">
+            <div class="col-lg-12 col-md-12 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <h2 class="mt-2 mb-3 tm-text-gray">Generate Fusion</h2>
+                <p class="float-md-left">Press this button to Generate a fusion between the two inputed midi files</p>
+            </div>
+            <div class="float-md-right">
+                <form action="/run-fusion/" method="POST">
+                    <button type="submit" id="vae-fusion" name="vae-fusion">Generate</button>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- Displaying the output the generated fusion -->
+        <div class="tm-section-mb tm-section-mt">
+            <hr>
+            <div class="row tm-section-mb">
+                <div class="col-lg-12">
+                    <div class="file-1">
+                        <h3 class="tm-site-heading">Fusion of Midi Samples</h3>
+                        <div id="vae-file" class="drag-area">
+                        </div>
+                        <script src="static\javascript\vae-midi-loader.js"></script>
+                        <div class="col-lg-12 tm-title-mt">
+                            <progress value="0" max="100" id="progressBarVae" class="progress-bar"
+                                style="display:none;"></progress>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GAN -->
+        <hr>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="tm-title-text">Generation using a GAN</h2>
+            </div>
+        </div>
+        <div class="row tm-section-par">
+            <div class="col-lg-12 col-md-12 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <h3 class="mt-2 mb-3 tm-text-gray">Overview</h3>
+                <p>Produces an output using a Generative Adversarial Network (GAN) trained on two different styles of
+                    Music, classical, and video game theme songs.
+                    The below files are a sample generation using each dataset as well as an interpolation between these
+                    two samples.
+                    <br>
+                    You may also choose to generate your own sample. You can change the following variables:
+                <ul style="margin-left: 5%;">
+                    <li>Length - Varies how long the created sample is</li>
+                    <li>Offset Increment - Varies the rhythm</li>
+                    <li>Alpha - Varies the random factor</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <!-- Displaying sample auto generated midi files -->
+        <div class="tm-section-mb tm-section-mt">
+            <hr>
+            <div class="col-lg-12 col-md-12 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <h3 class="mt-2 mb-3 tm-text-gray">Generated Songs</h3>
+            </div>
+            <div class="row tm-section-mb">
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Generated using a Mozart Datset</h3>
+                    <div>
+                        <midi-player src="static\samples\GAN - chopin x mozart\TransposedMozart_500epoch.mid" sound-font></midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Generated using a Chopin Datset</h3>
+                    <div>
+                        <midi-player src="static\samples\GAN - chopin x mozart\TransposedChopin_500epoch.mid" sound-font></midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Generated using a Haydn Datset</h3>
+                    <div>
+                        <midi-player src="static\samples\GAN - haydn x chopin\haydn200epochs.mid" sound-font></midi-player>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Displaying sample for pre-fused midi files -->
+        <div class="tm-section-mb tm-section-mt">
+            <div class="col-lg-12 col-md-12 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <h3 class="mt-2 mb-3 tm-text-gray">Interpolation on Generated Samples</h3>
+            </div>
+            <div class="row tm-section-mb">
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Chopin x Mozart</h3>
+                    <div>
+                        <midi-player
+                            src="static\samples\GAN - chopin x mozart\Gan-Generated_Chopin_x_Mozart.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Haydn x Chopin</h3>
+                    <div>
+                        <midi-player
+                            src="static\samples\GAN - haydn x chopin\Gan-Generated_Haydn_Chopin.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="tm-site-heading">Mozart x Haydn</h3>
+                    <div>
+                        <midi-player
+                            src="static\samples\GAN - haydn x mozart\GAN-generated_haydn_x_mozart.mid"
+                            sound-font></midi-player>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- To add difernt sliders/option for use to choose. eg tempoerate, seconds of input -->
+        <hr>
+        <div class="tm-section-mb tm-section-mt">
+            <h3 class="tm-site-heading">Changing Variables</h3>
+
+            <div class="slidecontainer">
+                <h5 class="mt-2 mb-3 tm-text-gray">Length</h5>
+                <input type="range" min="200" max="250" value="200" step="5" class="slider" id="slider-1">
+                <p>Value: <span id="slider-1-value"></span></p>
+                <script src="static\javascript\slider.js"></script>
+            </div>
+
+            <div class="slidecontainer">
+                <h5 class="mt-2 mb-3 tm-text-gray">Offset Increment</h5>
+                <input type="range" min="0.5" max="0.8" value="0.5" step="0.1" class="slider" id="slider-2">
+                <p>Value: <span id="slider-2-value"></span></p>
+                <script src="static\javascript\slider.js"></script>
+            </div>
+
+            <div class="slidecontainer">
+                <h5 class="mt-2 mb-3 tm-text-gray">Alpha</h5>
+                <input type="range" min="0.2" max="0.9" value="0.2" step="0.1" class="slider" id="slider-3">
+                <p>Value: <span id="slider-3-value"></span></p>
+                <script src="static\javascript\slider.js"></script>
+            </div>
+
+        </div>
+
+        <!-- Generate Python script run -->
+        <hr>
+        <div class="tm-section-par">
+            <div class="col-lg-12 col-md-12 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <h2 class="mt-2 mb-3 tm-text-gray">Generate</h2>
+                <p class="float-md-left">Press this button to Generate a new file using a pre-trained model</p>
+            </div>
+            <div class="float-md-right">
+                <form action="/run-gan/" method="POST">
+                    <input hidden type="submit" class="value-1" name="slider-1-value" value="200">
+                    <input hidden type="submit" class="value-2" name="slider-2-value" value="0.5">
+                    <input hidden type="submit" class="value-3" name="slider-3-value" value="0.2">
+                    <button type="submit" name="slider-values" id="slider-values" value="200,0.5,0.2">Generate</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Displaying the output the generated midi file -->
+        <div class="tm-section-mb tm-section-mt">
+            <hr>
+            <div class="row tm-section-mb">
+                <div class="col-lg-12">
+                    <div class="file-2">
+                        <h3 class="tm-site-heading">Generation with GAN</h3>
+                        <p>This should take around 6 minutes to generate.</p>
+                        <div id="gan-file" class="drag-area">
+                        </div>
+                        <script src="static\javascript\gan-midi-loader.js"></script>
+                        <div class="col-lg-12 tm-title-mt">
+                            <progress value="0" max="2750" id="progressBarGan" class="progress-bar"
+                                style="display:none;"></progress>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--  Bottom Text -->
+        <div class="row tm-section-mb tm-section-mt">
+            <hr>
+            <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <h3 class="mt-2 mb-3 tm-text-gray">Variational AutoEncoder (VAE)</h3>
+                <p>The VAE is a neural network architecture that works by “encoding” data (such as a midi file) in such
+                    a
+                    way that the data can be represented in a compressed form that describes where that data point
+                    exists in the total possible “data space”. This data space is referred to as latent space in VAEs
+                    and can be described by parameters such as the mean and standard deviation, similar to a
+                    Gaussian distribution. By constructing this latent space and randomly sampling it, it is possible to
+                    get an output that is similar to other data points in the training data, but not exactly like any
+                    other data point. This is what makes VAEs exciting for creative generative modeling.</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 pr-lg-5 mb-md-0 mb-4">
+                <h3 class="mt-2 mb-3 tm-text-gray">Generative Adversarial Network (GAN)</h3>
+                <p>Generative adversarial networks (GANs) are algorithmic architectures that use two neural networks,
+                    pitting one against the other (thus the “adversarial”) in order to generate new, synthetic instances
+                    of data that can pass for real data. They are used widely in image generation, video generation, and
+                    voice generation, but can also be applied in such cases to generate music.</p>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <h3 class="mt-2 mb-3 tm-text-gray">Expected results</h3>
+                <p>When fusing two songs using vae, you can definitely hear the influence both of them have on the
+                    created song.
+                    <br><br>
+                    When creating with GAN, the sound of the song might not be as enjoyable to listen to,
+                    however some influence from the training dataset can be still be heard.
+                    <br><br>
+                    Nowadays technology is always advancing. As we have seen improvment in ai such as deepfaked images
+                    and videos. Im sure we'll soon see an improvement when it comes to music fusion and creation.
+                </p>
+            </div>
+        </div>
+        <hr>
+
+
+        <!-- Footer -->
+        <footer class="row mt-5 mb-5">
+            <div class="col-lg-12">
+                <p class="text-center tm-text-gray tm-copyright-text mb-0">Copyright &copy;
+                    <span class="tm-current-year">2021</span> GAPT
+
+                    | Students: Paolo Bezzin - Logan Formosa - Yran Riahi - Daniel Grech - David Dimech
+                </p>
+            </div>
+        </footer>
+    </div>
+    <!-- .container -->
+
+    <!-- <script src="js/jquery.min.js"></script>-->
+    <!-- <script src="js/jquery-3.2.1.slim.min.js"></script> -->
+    <!-- <script src="js/templatemo-script.js"></script>  -->
+
+</body>
+
+</html>
