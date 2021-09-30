@@ -1,6 +1,11 @@
 # AI Music Generation
 
-This project aims to fuse 2 tracks of music together, ultimately having the ability to fuse 2 styles.
+This project aims to fuse 2 tracks of music together, using two methods. A Variational Auto Encoder and a Generative Adversarial Network.
+Included in this project are also:
+* A website which showcases some examples as well as serves as an interface for both systems.
+* A site scraper which was used to efficiently download midi samples from websites which offer them.
+* A transposer which chages all midi file samples to the same key.
+
 
 
 ## Description
